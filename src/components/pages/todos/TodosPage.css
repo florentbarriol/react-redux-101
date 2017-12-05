@@ -1,8 +1,15 @@
 .todos-list {
-    margin:2em 0;
+    margin: 2em 0;
     list-style: disc;
     line-height: 1.5;
+    max-width: 250px;
 }
-.todos-list li {
 
+.todos-list li {
+    cursor: pointer;
+    transition: all .1s ease 0s;
+}
+.todos-list li:hover {
+    text-decoration: line-through;
+    opacity: .5;
 }

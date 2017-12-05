@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import HomePage from './pages/HomePage';
 //import AboutPage from './pages/AboutPage';
-import TodosPage from './pages/TodosPage';
+import TodosPage from './pages/todos/TodosPage';
 import { Link } from 'react-router-dom';
 
 import logo from '../logo.svg';

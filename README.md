@@ -5,8 +5,8 @@ This project served as a starting point for the training I gave to the Plebicom 
 The training aims to increase the competence of the dev team on React & Redux and make them operational to build React/Redux app.
 
 ## Requirements
-* Node.js >= v6.x
-* A powerful code editor, like [VS Code](https://code.visualstudio.com/)
+* Node.js >= v6.x, download [here](https://nodejs.org/en/download)
+* A powerful code editor, like [VS Code](https://code.visualstudio.com/#alt-downloads)
 
 ## How to use
 * clone this repository (or the intern repo)

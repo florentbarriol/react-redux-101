@@ -17,7 +17,7 @@ The training aims to increase the competence of the dev team on React & Redux an
 * How to create a component : create the AboutPage component
   * you must uncomment line in App.js to view your component
 * How to composing components : explode the TodosPage component in small and simple components
-* How to handle event : onChange listener on the todo input and onSubmit on the new todo form
+* How to handle event : onChange listener on the todo input and onSubmit on the new todo form with simple console.log
 * How to use state and props : add local state in top Todos component to store new todos and pass stored todos into children component to display them
 * Component lifecycle
 * React Developper Tools & Redux logger

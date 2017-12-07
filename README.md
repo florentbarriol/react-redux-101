@@ -13,7 +13,7 @@ The training aims to increase the competence of the dev team on React & Redux an
 * execute `npm install`
 * execute `npm start` to run and hack the app
 
-## Summary
+## TODOS
 * How to create a component : create the AboutPage component
   * you must uncomment line in App.js to view your component
 * How to composing components : explode the TodosPage component in small and simple components
@@ -24,7 +24,7 @@ The training aims to increase the competence of the dev team on React & Redux an
 * Redux logger
 * How to create redux actions : create ADD_TODO and REMOVE_TODO actions with their actions types
 * How to create a redux reducer : create the todos reducer to store your todos and handle todos actions
-* How to connect a component to the store : connect your top level todos component to store (mapStateToProps), bind addTodo action in your input todo component(mapDispatchToProps), display the stored todos, bind the remove action with the onClick on a todo in the list
+* How to connect a component to the store : connect your components to store (mapStateToProps), bind addTodo and removeTodo actions in your components(mapDispatchToProps), display the stored todos, bind the remove action with the onClick on a todo in the list
 * How to create async actions : create an action to fetch an external api (with api-middleware-redux)
 
 

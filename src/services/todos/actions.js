@@ -1,8 +1,3 @@
-
-/**
- * HERE goes the actions Types
- */
-
 /**
  * Here goes the actions
  */

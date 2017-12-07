@@ -174,7 +174,7 @@ export default connect(mapStateToProps)(MyComponent);
 // injecte seulement dispatch dans les props
 export default connect()(MyComponent);
 </code></pre></div></div></section><section data-id="b815056ec3af6d86075860d864d9e38c"><div class="sl-block" data-block-type="text" style="width: 869px; left: 79px; top: 72px; height: auto;" data-block-id="7f3641ff19a981638cd85aad257f3b8b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
-<h3 style="text-align: left;">mapDispatchToProps(dispatch, [ownProps])</h3>
+<h3>mapDispatchToProps(dispatch, [ownProps])</h3>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 869px; left: 79px; top: 176px;" data-block-id="f364afb52ed924638df0c9e5262e2807"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.56;" data-has-line-height="">
 <ul>
@@ -194,7 +194,39 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyComponent);
-</code></pre></div></div></section></section><section class="stack" data-id="5fc92262c9f84d13a9d209e461b3ef03"><section data-id="296ed608bdd4915314cdbd9b172212b1"><div class="sl-block" data-block-type="text" style="width: 860px; left: 82px; top: 219px; height: auto;" data-block-id="d744688cb356578a125c5a383765111b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+</code></pre></div></div></section><section data-id="6e1ce8dcb60c7395fae2cbeb3ecd37b0"><div class="sl-block" data-block-type="text" style="width: 869px; left: 79px; top: 72px; height: auto;" data-block-id="d358c2f829969c80dc7efe912c17a29f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h3>Selectors</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 869px; left: 79px; top: 176px;" data-block-id="9472259e23e9b9f24df9acc9d5593459"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li>Fonction getter pour sélectionner des valeurs dans le store</li>
+	<li>Permet de faire du caching</li>
+	<li>Déclaration dans le reducer ou un fichier dédié</li>
+	<li>Appel dans le mapStateToProps</li>
+	<li>On utilisera la librairie Reselect pour créer nos selectors</li>
+</ul>
+</div></div>
+</section><section data-id="b0f92c5af3ecc341bbc7466a3bc8e5cc"><div class="sl-block" data-block-type="text" style="width: 869px; left: 79px; top: 72px; height: auto;" data-block-id="68284f19aada05b102b09f1196c725f7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h3>Exemple</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="code" style="width: 869px; height: 360px; left: 78px; top: 144px;" data-block-id="1ba9ffc536f12f4617b48659360bcee7"><div class="sl-block-content" data-highlight-theme="obsidian" style="z-index: 12;"><pre class="javascript"><code>// selectors.js
+mport { createSelector } from 'reselect';
+export const getTodos = state =&gt; state.todos.todos;
+export const getNotCompletedTodos = createSelector( 
+    getTodos,
+    todos =&gt; todos.filter(todo =&gt; !todo.completed)
+);
+
+// ListTodos.js
+class ListTodos ...
+...
+
+const mapStateToProps = state =&gt; {
+    return {
+        todos: getNotCompletedTodos(state)
+    }
+}</code></pre></div></div></section></section><section class="stack" data-id="5fc92262c9f84d13a9d209e461b3ef03"><section data-id="296ed608bdd4915314cdbd9b172212b1"><div class="sl-block" data-block-type="text" style="width: 860px; left: 82px; top: 219px; height: auto;" data-block-id="d744688cb356578a125c5a383765111b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
 <h1>Async Actions</h1>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 869px; left: 79px; top: 331px;" data-block-id="7d8efa5a830ab7eee4caa065358dcda2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
@@ -277,7 +309,7 @@ const fetchTodos = () =&gt; {
 
 		
 <script>
-	var SLConfig = {"current_user":{"id":787884,"username":"florentbarriol","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/11b5ba76849555582909fc17d7b9a740?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":639094,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"florent.barriol@gmail.com","notify_on_receipt":true,"billing_address":null,"billing_vat_id":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1,"storage_used":393352,"storage_limit":262144000},"deck":{"id":1134340,"slug":"redux-101","title":"Redux 101","description":"Redux basic concept presentation by @FlorentBarriol","width":1024,"height":576,"visibility":"all","published_at":"2017-12-06T16:22:43.878Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/bd6a918446f807c01a795237a9c0ff17/thumb.jpg?1512577403","view_count":1,"user":{"id":787884,"username":"florentbarriol","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/11b5ba76849555582909fc17d7b9a740?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":639094,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"concave","theme_id":null,"theme_font":"opensans","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":28,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1512688687548,"font_typekit":null,"font_google":null,"notes":{}}};
+	var SLConfig = {"current_user":{"id":787884,"username":"florentbarriol","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/11b5ba76849555582909fc17d7b9a740?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":639094,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"florent.barriol@gmail.com","notify_on_receipt":true,"billing_address":null,"billing_vat_id":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1,"storage_used":393352,"storage_limit":262144000},"deck":{"id":1134340,"slug":"redux-101","title":"Redux 101","description":"Redux basic concept presentation by @FlorentBarriol","width":1024,"height":576,"visibility":"all","published_at":"2017-12-06T16:22:43.878Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/bd6a918446f807c01a795237a9c0ff17/thumb.jpg?1512577403","view_count":1,"user":{"id":787884,"username":"florentbarriol","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/11b5ba76849555582909fc17d7b9a740?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":639094,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"concave","theme_id":null,"theme_font":"opensans","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":30,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1512690488850,"font_typekit":null,"font_google":null,"notes":{}}};
 </script>
 
 		<script>

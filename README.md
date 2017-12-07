@@ -20,8 +20,7 @@ The training aims to increase the competence of the dev team on React & Redux an
 * How to handle event : onChange listener on the todo input and onSubmit on the new todo form with simple console.log
 * How to use state and props : add local state in top Todos component to store new todos and pass stored todos into children component to display them
 * Component lifecycle
-* React DevTools
-* Redux logger
+* React Developper Tools & Redux logger
 * How to create redux actions : create ADD_TODO and REMOVE_TODO actions with their actions types
 * How to create a redux reducer : create the todos reducer to store your todos and handle todos actions
 * How to connect a component to the store : connect your components to store (mapStateToProps), bind addTodo and removeTodo actions in your components(mapDispatchToProps), display the stored todos, bind the remove action with the onClick on a todo in the list

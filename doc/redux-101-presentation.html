@@ -20,7 +20,7 @@
 </style>
 
 		<meta content="authenticity_token" name="csrf-param" />
-<meta content="uwmz702uHHv9qbUa2Am8a9+tbzO9+RF7bBLwzGu3uHY=" name="csrf-token" />
+<meta content="e1w9pen7MK5E9mTnJvDiFcS21FS7dB8tkJRKexMt5m0=" name="csrf-token" />
 		<style id="user-css-output" type="text/css"></style>
 	</head>
 	<body>
@@ -63,16 +63,17 @@
 <div class="sl-block" data-block-type="text" style="height: auto; width: 869px; left: 79px; top: 72px;" data-block-id="c206b75cdadaadc72d65808d598cca00"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <h3>Qu'est ce qu'un Action Creator ?</h3>
 </div></div>
-<div class="sl-block" data-block-type="code" style="width: 711px; height: 243px; left: 157px; top: 288px;" data-block-id="26a9bcfb762f4ed6171c0e0197ece704"><div class="sl-block-content" style="z-index: 12; font-size: 105%;" data-highlight-theme="obsidian"><pre class="javascript"><code>const ADD_TODO = "ADD_TODO";
+<div class="sl-block" data-block-type="code" style="width: 869px; height: 288px; left: 79px; top: 288px;" data-block-id="26a9bcfb762f4ed6171c0e0197ece704"><div class="sl-block-content" style="z-index: 12; font-size: 105%;" data-highlight-theme="obsidian"><pre class="javascript"><code>const ADD_TODO = "ADD_TODO";
 
-function addTodo(id, message) {
-  return {
-    id,
-    message
-  }
+function addTodo(newTodo) {
+  return { type: ADD_TODO, newTodo }
 }
 
-dispatch(addTodo(text));</code></pre></div></div></section></section><section class="stack" data-id="74022ec32e002347bd45ac5e138d1024"><section data-id="4444fac0a8909638934462f3cf868b9b"><div class="sl-block" data-block-type="text" style="width: 860px; left: 82px; top: 219px; height: auto;" data-block-id="3aee09fa3687bcbbbbe4f0b12383ae78"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+dispatch(addTodo(text));
+
+// en utilisant une fonction générique 
+// pour créer simplement des actions creators
+const addTodo = makeActionCreator(ADD_TODO, "newTodo");</code></pre></div></div></section></section><section class="stack" data-id="74022ec32e002347bd45ac5e138d1024"><section data-id="4444fac0a8909638934462f3cf868b9b"><div class="sl-block" data-block-type="text" style="width: 860px; left: 82px; top: 219px; height: auto;" data-block-id="3aee09fa3687bcbbbbe4f0b12383ae78"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h1>Reducers</h1>
 </div></div></section><section data-id="ee4590e2ace8e03acf920b4b2d4210a4"><div class="sl-block" data-block-type="text" style="width: 866px; left: 82px; top: 72px; height: auto;" data-block-id="ac79c285891399e4ff3d37b2f4458aa0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
 <h3>Qu'est ce qu'un reducer ?</h3>
@@ -87,26 +88,23 @@ dispatch(addTodo(text));</code></pre></div></div></section></section><section cl
 </div></div></section><section data-id="ea4729f7842e341bb8e5d3d7a54e62ca"><div class="sl-block" data-block-type="text" style="width: 860px; left: 82px; top: 72px; height: auto;" data-block-id="92e5bdda0a6b2a587ca74ef0edead439"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
 <h3>Exemple d'un reducer</h3>
 </div></div>
-<div class="sl-block" data-block-type="code" style="width: 866px; height: 316px; left: 82px; top: 188px;" data-block-id="5f2645b7a0bed370af74689be3a21ceb"><div class="sl-block-content" style="z-index: 12; font-size: 105%;" data-highlight-theme="obsidian"><pre class="javascript"><code>const initialState = {
-  todos: []
-}
-
-function reducer(state = initialState, action) {
+<div class="sl-block" data-block-type="code" style="width: 866px; height: 234px; left: 82px; top: 188px;" data-block-id="5f2645b7a0bed370af74689be3a21ceb"><div class="sl-block-content" style="z-index: 12; font-size: 105%;" data-highlight-theme="obsidian"><pre class="javascript"><code>function reducer(state = [], action) {
   switch (action.type) {
     case ADD_TODO:
       return Object.assign({}, state, {
-        todos: [...state.todos, { text: action.text, completed: false }]
+        todos: [...state.todos, action.newTodo]
       });
     default:
       return state;
   }
-}</code></pre></div></div></section><section data-id="771363226d970d02ca6c996498aeb9ca"><div class="sl-block" data-block-type="text" style="width: 860px; left: 82px; top: 72px; height: auto;" data-block-id="c0bb5dcfb9db53d759fe728ec7fc2f7f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+}
+</code></pre></div></div></section><section data-id="771363226d970d02ca6c996498aeb9ca"><div class="sl-block" data-block-type="text" style="width: 860px; left: 82px; top: 72px; height: auto;" data-block-id="c0bb5dcfb9db53d759fe728ec7fc2f7f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
 <h3>Exemple de combinaison de reducers</h3>
 </div></div>
 <div class="sl-block" data-block-type="code" style="width: 869px; height: 432px; left: 79px; top: 144px;" data-block-id="65b110c4d183f86ac3f669bb8b642b2e"><div class="sl-block-content" style="z-index: 11; font-size: 105%;" data-highlight-theme="obsidian"><pre class="javascript"><code>const todos = (state = [], action) =&gt; {
   switch (action.type) {
     case ADD_TODO:
-      return  [...state, { text: action.text, completed: false }];
+      return  [...state, action.newTodo];
     default:
       return state;
   }
@@ -156,7 +154,9 @@ export const reducer = combineReducers({ todos,fetching });
 	<li>A chaque fois qu'une valeur est modifié le composant sera mis à jour</li>
 </ul>
 </div></div>
-<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 661px; height: 54px; left: 183px; top: 477px;" data-block-id="9255d30f665947ff420b0cf32eec9442"><div class="sl-block-content" data-highlight-theme="obsidian" style="z-index: 13;"><pre class="javascript"><code>export default connect(mapStateToProps)(MyComponent);</code></pre></div></div></section><section data-id="b326b89d45c93041aee8c2535f900306"><div class="sl-block" data-block-type="text" style="width: 869px; left: 79px; top: 72px; height: auto;" data-block-id="4dbdd38179b5536be734375523ec8c1e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 661px; height: 54px; left: 183px; top: 477px;" data-block-id="9255d30f665947ff420b0cf32eec9442"><div class="sl-block-content" data-highlight-theme="obsidian" style="z-index: 13;"><pre class="javascript"><code>// injecte des props dans le composant et dispatch implicitement
+export default connect(mapStateToProps)(MyComponent);
+</code></pre></div></div></section><section data-id="b326b89d45c93041aee8c2535f900306"><div class="sl-block" data-block-type="text" style="width: 869px; left: 79px; top: 72px; height: auto;" data-block-id="4dbdd38179b5536be734375523ec8c1e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
 <h3>mapStateToProps(state, [ownProps])</h3>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 869px; left: 79px; top: 176px;" data-block-id="8368c7969ccf6a7ffc740b994c004318"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.56;" data-has-line-height="">
@@ -179,15 +179,15 @@ export default connect()(MyComponent);
 <div class="sl-block" data-block-type="text" style="height: auto; width: 869px; left: 79px; top: 176px;" data-block-id="f364afb52ed924638df0c9e5262e2807"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.56;" data-has-line-height="">
 <ul>
 	<li>dispatch = fonction pour propager une action</li>
-	<li>dispatch est injecté automatiquement si on ne met pas de mapDispatchToProps</li>
 </ul>
 </div></div>
-<div class="sl-block" data-block-type="code" style="width: 869px; height: 251px; left: 79px; top: 325px;" data-block-id="f96a11fb582973bbbd1ddfc3f38041b0"><div class="sl-block-content" data-highlight-theme="obsidian" style="z-index: 12;"><pre class="javascript"><code>import { addTodo, fetchTodo } from './actions.js';
+<div class="sl-block" data-block-type="code" style="width: 869px; height: 321px; left: 79px; top: 235px;" data-block-id="f96a11fb582973bbbd1ddfc3f38041b0"><div class="sl-block-content" data-highlight-theme="obsidian" style="z-index: 12;"><pre class="javascript"><code>import { addTodo, fetchTodo } from './actions.js';
 
 const mapStateToProps = (state, ownProps = {}) =&gt; {
     return { todos: state.todos };
 }
-
+// connect va automatiquement 'entouré' nos actions d'un dispatch 
+// pour éviter d'avoir à utiliser dispatch dans le composant
 const mapDispatchToProps = {
     addTodo,
     fetchTodo
@@ -200,7 +200,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(MyComponent);
 <div class="sl-block" data-block-type="text" style="height: auto; width: 869px; left: 79px; top: 176px;" data-block-id="9472259e23e9b9f24df9acc9d5593459"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.56;" data-has-line-height="">
 <ul>
 	<li>Fonction getter pour sélectionner des valeurs dans le store</li>
-	<li>Permet de faire du caching</li>
+	<li>Permet de faire du cache</li>
 	<li>Déclaration dans le reducer ou un fichier dédié</li>
 	<li>Appel dans le mapStateToProps</li>
 	<li>On utilisera la librairie Reselect pour créer nos selectors</li>
@@ -219,8 +219,9 @@ export const getNotCompletedTodos = createSelector(
 );
 
 // ListTodos.js
-class ListTodos ...
-...
+class ListTodos {
+    ...
+}
 
 const mapStateToProps = state =&gt; {
     return {
@@ -303,13 +304,13 @@ const fetchTodos = () =&gt; {
 }</code></pre></div></div></section></section><section data-id="08b88973ed561fc15987819af8354dff"><div class="sl-block" data-block-type="text" style="width: 860px; left: 82px; top: 35px; height: auto;" data-block-id="9f0b362984feb4c1dc398f0de271b5aa"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
 <h2>Merci</h2>
 </div></div>
-<div class="sl-block" data-block-type="image" style="width: 836px; height: 418px; left: 94px; top: 121px;" data-block-id="04dc5a4ceb32243f3db3702ee3217b1a"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="480" data-natural-height="240" data-src="https://media.giphy.com/media/26BRPHWEFp51GEQxO/giphy.gif"></div></div></section>
+<div class="sl-block" data-block-type="image" style="width: 836px; height: 418px; left: 94px; top: 121px;" data-block-id="04dc5a4ceb32243f3db3702ee3217b1a"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="480" data-natural-height="240" data-lazy-loaded="" data-src="https://media.giphy.com/media/26BRPHWEFp51GEQxO/giphy.gif"></div></div></section>
 			</div>
 		</div>
 
 		
 <script>
-	var SLConfig = {"current_user":{"id":787884,"username":"florentbarriol","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/11b5ba76849555582909fc17d7b9a740?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":639094,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"florent.barriol@gmail.com","notify_on_receipt":true,"billing_address":null,"billing_vat_id":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1,"storage_used":393352,"storage_limit":262144000},"deck":{"id":1134340,"slug":"redux-101","title":"Redux 101","description":"Redux basic concept presentation by @FlorentBarriol","width":1024,"height":576,"visibility":"all","published_at":"2017-12-06T16:22:43.878Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/bd6a918446f807c01a795237a9c0ff17/thumb.jpg?1512577403","view_count":1,"user":{"id":787884,"username":"florentbarriol","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/11b5ba76849555582909fc17d7b9a740?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":639094,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"concave","theme_id":null,"theme_font":"opensans","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":30,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1512690488850,"font_typekit":null,"font_google":null,"notes":{}}};
+	var SLConfig = {"current_user":{"id":787884,"username":"florentbarriol","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/11b5ba76849555582909fc17d7b9a740?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":639094,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"florent.barriol@gmail.com","notify_on_receipt":true,"billing_address":null,"billing_vat_id":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1,"storage_used":393352,"storage_limit":262144000},"deck":{"id":1134340,"slug":"redux-101","title":"Redux 101","description":"Redux basic concept presentation by @FlorentBarriol","width":1024,"height":576,"visibility":"all","published_at":"2017-12-06T16:22:43.878Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/bd6a918446f807c01a795237a9c0ff17/thumb.jpg?1512577403","view_count":1,"user":{"id":787884,"username":"florentbarriol","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/11b5ba76849555582909fc17d7b9a740?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":639094,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"concave","theme_id":null,"theme_font":"opensans","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":30,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1512751956414,"font_typekit":null,"font_google":null,"notes":{}}};
 </script>
 
 		<script>
